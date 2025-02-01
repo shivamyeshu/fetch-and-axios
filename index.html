@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch & axios</title>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.6/axios.min.js"></script>
+    </head>
+</head>
+<body>
+    <div id="posts"></div>
+
+    <!-- <script src="https://gist.github.com/shivamyeshu/ca13ae8c01f73f76490dcb13b7f6ae45.js"></script> -->
+
+    <script>
+        // usning axios library
+
+        async function data(){
+            const post = await axios.get('https://jsonplaceholder.typicode.com/posts/1')
+            document.getElementById('posts').innerHTML = "call from axios  the title is = "+  post.data.title;
+        }
+
+        data()
+
+    //    async function getpost(){
+    //         const post = await fetch('https://jsonplaceholder.typicode.com/posts/1')
+    //         const json = await post.json()
+    //         document.getElementById('posts').innerHTML = "call from fetch "+ json.id ;
+    //     }
+    //     getpost()
+
+
+    //     async function fetchPosts() {
+    //   const res = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+    //   const json = await res.json();
+    //   document.getElementById("posts").innerHTML = json.title;
+    // }
+
+    // fetchPosts();
+    </script>
+</body>
+
+</html>
