@@ -4,24 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fetch & axios</title>
+    
+    <link rel="stylesheet" href="style.css">
     <head>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.6/axios.min.js"></script>
-    </head>
+    
+    <script>
+
+        async function fetchsum() {
+            const a = document.getElementById("a").value;
+            const b = document.getElementById("b").value;
+
+            try {
+                const response = await axios.get("http://localhost:3000/sum", {
+                    params: { a, b }
+                });
+
+                document.getElementById("total").innerText = "Sum: " + response.data.ans;
+            } catch (error) {
+                console.error("Error fetching sum:", error);
+                document.getElementById("total").innerText = "Error: " + error.response.data.error;
+                console.log(total);
+                
+            }
+        }
+
+    </script></head>
+
 </head>
 <body>
-    <div id="posts"></div>
+    
+    <div style="display: flex;"> 
+    
+    <input  type="text" id="a" placeholder="ae">
+    
+   <input type="text"  id ="b" placeholder="be">
+    </div>
+    <button onclick="fetchsum()"> sum</button>
+
+    <div id="total"></div>
+
+<!-- <div id="posts"></div> -->
 
     <!-- <script src="https://gist.github.com/shivamyeshu/ca13ae8c01f73f76490dcb13b7f6ae45.js"></script> -->
 
     <script>
-        // usning axios library
+        // document.getElementById('sum').addEventListener('click',function(){
+        //     const a = document.getElementById('a').value;
+        //     const b = document.getElementById('b').value;
+        //     const sum = parseInt(a) + parseInt(b);
+        //     document.getElementById('total').innerHTML = "sum is = "+ sum;
+        // })
 
-        async function data(){
-            const post = await axios.get('https://jsonplaceholder.typicode.com/posts/1')
-            document.getElementById('posts').innerHTML = "call from axios  the title is = "+  post.data.title;
-        }
+    // usning axios library
 
-        data()
+    // async function data(){
+        // const post = await axios.get('https://jsonplaceholder.typicode.com/posts/1')
+        // document.getElementById('posts').innerHTML = "call from axios  the title is = "+  post.data.title;
+    // }
+    // data()
+
+
+    // using fetch function 
 
     //    async function getpost(){
     //         const post = await fetch('https://jsonplaceholder.typicode.com/posts/1')
@@ -29,7 +73,6 @@
     //         document.getElementById('posts').innerHTML = "call from fetch "+ json.id ;
     //     }
     //     getpost()
-
 
     //     async function fetchPosts() {
     //   const res = await fetch("https://jsonplaceholder.typicode.com/posts/1");
